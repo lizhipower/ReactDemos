@@ -15,7 +15,7 @@ export default class Nav extends React.Component {
   handleLinkClick() {
     const { pathname } = this.props.location;
     this.setState({
-      pathname: pathname
+      pathname
     });
   }
   render() {
@@ -26,6 +26,7 @@ export default class Nav extends React.Component {
           <li><Link to="/blog">Blog</Link></li>
           <li><Link to="/profile">Profile</Link></li>
           <li><Link to="/accordion">Accordion</Link></li>
+          <li><Link to="/string_demo">StringDemo</Link></li>
         </ul>
       </div>
 

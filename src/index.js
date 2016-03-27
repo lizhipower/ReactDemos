@@ -8,6 +8,7 @@ import Photo from './pages/Photo';
 import Blog from './pages/Blog';
 import Profile from './pages/Profile';
 import Accordion from './pages/Accordion';
+import StringDemo from './pages/StringDemo';
 
 import '../node_modules/normalize.less';
 const app = document.getElementById('app');
@@ -19,6 +20,7 @@ const App = (
       <Route path="/blog" component={ Blog } />
       <Route path="/profile" component={ Profile } />
       <Route path="/accordion" component={ Accordion } />
+      <Route path="/string_demo" component={ StringDemo } />
     </Route>
   </Router>
 );
