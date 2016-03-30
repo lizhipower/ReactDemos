@@ -9,7 +9,7 @@ export default class Blog extends React.Component {
     return (
       <div>
         <p>Blog</p>
-        <button onClick={ ajaxBlog }>DO AJAX</button>
+        <button onClick={ ajaxBlog }>DO AJAX JsonP</button>
       </div>
     );
   }

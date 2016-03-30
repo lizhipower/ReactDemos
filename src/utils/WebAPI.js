@@ -12,10 +12,8 @@ export function ajaxBlog() {
   console.log('ajaxBLOG FUNC');
 
   $.ajax({
-    type: 'GET',
     url: fanfouBlogUrl,
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
+    dataType: 'jsonp',
     success(blogs) {
       console.log(blogs);
       receiveBlogs(blogs);

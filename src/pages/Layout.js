@@ -14,9 +14,6 @@ export default class Layout extends React.Component {
   }
   render() {
     const { location } = this.props;
-    // console.log(this.props);
-    // console.log(location);
-    
     return (
       <div>
         <h1>{location.pathname}</h1>
