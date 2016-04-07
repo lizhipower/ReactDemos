@@ -28,6 +28,7 @@ export default class Nav extends React.Component {
           <li><Link to="/accordion">Accordion</Link></li>
           <li><Link to="/string_demo">StringDemo</Link></li>
           <li><Link to="/layout_demo">LayoutDemo</Link></li>
+          <li><Link to="/event_demo">DOMEventDemo</Link></li>
         </ul>
       </div>
 
