@@ -11,13 +11,13 @@ export default class DOMEventLayer extends React.Component {
   }
   componentDidMount() {
     let tar = ReactDOM.findDOMNode(this);
-    tar.addEventListener('click', this.handleDOMEvent,true);
-    tar.addEventListener('click', this.handleDOMEvent,false);
+    tar.addEventListener('click', this.handleDOMEvent, true);
+    tar.addEventListener('click', this.handleDOMEvent, false);
   }
   componentWillUnmount() {
     let tar = ReactDOM.findDOMNode(this);
-    tar.removeEventListener('click', this.handleDOMEvent,true);
-    tar.removeEventListener('click', this.handleDOMEvent,false);
+    tar.removeEventListener('click', this.handleDOMEvent, true);
+    tar.removeEventListener('click', this.handleDOMEvent, false);
   }
   handleDOMEvent(e) {
     let pause = 200;

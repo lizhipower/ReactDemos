@@ -8,16 +8,17 @@ npm run dev
     <Index />
 <Nav/>
 ```
- 
+
 ```
-<Router> 
-    <Route> 
-    <Route/> 
-<Router/> 
+<Router>
+    <Route>
+    <Route/>
+<Router/>
 ```
 
 Demos:
---router
---accordion
---layout
---DOM event
+
+- router
+- accordion
+- layout
+- DOM event

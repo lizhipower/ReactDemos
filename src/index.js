@@ -11,6 +11,7 @@ import Accordion from './pages/Accordion';
 import StringDemo from './pages/StringDemo';
 import LayoutDemo from './pages/LayoutDemo';
 import DOMEventDemo from './pages/DOMEventDemo';
+import Snake from './pages/Snake';
 
 import '../node_modules/normalize.less';
 const app = document.getElementById('app');
@@ -25,6 +26,7 @@ const App = (
       <Route path="/string_demo" component={ StringDemo } />
       <Route path="/layout_demo" component={ LayoutDemo } />
       <Route path="/event_demo" component={ DOMEventDemo } />
+      <Route path="/snake" component={ Snake } />
     </Route>
   </Router>
 );
