@@ -3,6 +3,7 @@
  * Email: lizhipower@gmail.com
  */
 import SnakeLayout from './Layout';
+import './layout.less';
 
 export default class SnakeDemo extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export default class SnakeDemo extends React.Component {
   }
   componentDidMount() {
     $(document).keydown((e) => this.handleMove(e));
+    $(document).keyup((e) => this.autoMove(e));
   }
   init() {
     return {
@@ -21,8 +23,23 @@ export default class SnakeDemo extends React.Component {
       ],
       attitude: 'left',
       bird: { row: 3, col: 3 },
-      scale: 20
+      scale: 20,
+      difficulty: 1
     };
+  }
+  kickOut() {
+    const KEY_MAP = {
+      up: 38,
+      right: 39,
+      down: 40,
+      left: 37
+    };
+    let keyCode;
+    keyCode = KEY_MAP[this.state.attitude];
+    let speed = 500 / this.state.difficulty;
+    this.timer = setInterval(() => {
+      this.doMove(keyCode);
+    }, speed);
   }
   newBird() {
     let rowArr = [];
@@ -52,79 +69,129 @@ export default class SnakeDemo extends React.Component {
   judgeDeath(firstEle) {
     let snakeArr = this.state.snakeArr;
     return snakeArr.some((ele) =>
-    ele.row === firstEle.row && ele.col === firstEle.col
-    );
+      ele.row === firstEle.row && ele.col === firstEle.col
+    )
+      || firstEle.row < 0
+      || firstEle.col > this.state.scale - 1
+      || firstEle.row > this.state.scale - 1
+      || firstEle.col < 0;
   }
-  handleMove(e) {
-    e.preventDefault();
-    if (e.keyCode) {
-      let attitude;
-      let snakeArr;
-      let firstEle;
-      let bird;
-      snakeArr = this.state.snakeArr;
-      bird = this.state.bird;
-      firstEle = {
-        row: snakeArr[0].row,
-        col: snakeArr[0].col
-      };
-      switch (e.keyCode) {
-        case 38:
-          attitude = 'up';
-          if (this.state.attitude !== 'down' && firstEle.row > 0) {
-            firstEle.row = firstEle.row - 1;
-          } else {
-            return 0;
-          }
-          break;
-        case 39:
-          attitude = 'right';
-          if (this.state.attitude !== 'left' && firstEle.col < this.state.scale - 1) {
-            console.log('yoo');
-
-            firstEle.col = firstEle.col + 1;
-          } else {
-            return 0;
-          }
-          break;
-        case 40:
-          attitude = 'down';
-          if (this.state.attitude !== 'up' && firstEle.row < this.state.scale - 1) {
-            firstEle.row = firstEle.row + 1;
-          } else {
-            return 0;
-          }
-          break;
-        case 37:
-          attitude = 'left';
-          if (this.state.attitude !== 'right' && firstEle.col > 0) {
-            firstEle.col = firstEle.col - 1;
-          } else {
-            return 0;
-          }
-          break;
-        default:
-          attitude = 'left';
-      }
-      this.setState({ attitude });
-      if (!this.judgeDeath(firstEle)) {
-        if (firstEle.row === bird.row && firstEle.col === bird.col) {
-          this.newBird();
+  doMove(keyCode) {
+    let attitude;
+    let snakeArr;
+    let firstEle;
+    let bird;
+    snakeArr = this.state.snakeArr;
+    bird = this.state.bird;
+    firstEle = {
+      row: snakeArr[0].row,
+      col: snakeArr[0].col
+    };
+    switch (keyCode) {
+      case 38:
+        attitude = 'up';
+        if (this.state.attitude !== 'down') {
+          firstEle.row = firstEle.row - 1;
         } else {
-          snakeArr.pop();
+          return 0;
         }
-        snakeArr.unshift(firstEle);
-        this.setState({ snakeArr });
+        break;
+      case 39:
+        attitude = 'right';
+        if (this.state.attitude !== 'left') {
+          firstEle.col = firstEle.col + 1;
+        } else {
+          return 0;
+        }
+        break;
+      case 40:
+        attitude = 'down';
+        if (this.state.attitude !== 'up') {
+          firstEle.row = firstEle.row + 1;
+        } else {
+          return 0;
+        }
+        break;
+      case 37:
+        attitude = 'left';
+        if (this.state.attitude !== 'right') {
+          firstEle.col = firstEle.col - 1;
+        } else {
+          return 0;
+        }
+        break;
+      default:
+        attitude = 'left';
+    }
+    this.setState({ attitude });
+
+    if (!this.judgeDeath(firstEle)) {
+      if (firstEle.row === bird.row && firstEle.col === bird.col) {
+        this.newBird();
       } else {
-        alert('you are dead');
-        this.setState(this.init());
+        snakeArr.pop();
       }
+      snakeArr.unshift(firstEle);
+      this.setState({ snakeArr });
+    } else {
+      alert('you are dead');
+      clearInterval(this.timer);
+      this.setState(this.init());
     }
     return 1;
   }
+  autoMove(e) {
+    e.preventDefault();
+    this.kickOut();
+  }
+  handleMove(e) {
+    e.preventDefault();
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
+    if (e.keyCode) {
+      this.doMove(e.keyCode);
+    }
+  }
+  handleEasy() {
+    this.setState({
+      difficulty: 1
+    });
+  }
+  handleMiddle() {
+    this.setState({
+      difficulty: 5
+    });
+  }
+  handleDifficulty() {
+    this.setState({
+      difficulty: 10
+    });
+  }
   render() {
     return (
-      <SnakeLayout scale={this.state.scale} snake={this.state.snakeArr} bird={this.state.bird} />
+        <div>
+          <SnakeLayout
+            scale={this.state.scale}
+            snake={this.state.snakeArr}
+            bird={this.state.bird}
+          />
+          <ul className="difficulty">
+            <li>
+              <button
+                onClick={ (e) => this.handleEasy(e) }
+              >Easy</button>
+            </li>
+            <li onClick={ (e) => this.handleMiddle(e) }>
+              <button>Middle</button>
+            </li>
+            <li>
+              <button
+                onClick={ (e) => this.handleDifficulty(e) }
+              >Hard</button>
+            </li>
+          </ul>
+        </div>
     );
   }
 }

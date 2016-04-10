@@ -2,7 +2,6 @@
  * Created by ZhiLI on 2016/4/10.
  * Email: lizhipower@gmail.com
  */
-import './layout.less';
 import Ele from './Ele';
 export default class SnakeLayout extends React.Component {
   render() {
