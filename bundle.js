@@ -36534,6 +36534,8 @@ webpackJsonp([0,1],[
 	
 	var _Layout2 = _interopRequireDefault(_Layout);
 	
+	__webpack_require__(255);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -36566,6 +36568,9 @@ webpackJsonp([0,1],[
 	      $(document).keydown(function (e) {
 	        return _this2.handleMove(e);
 	      });
+	      $(document).keyup(function (e) {
+	        return _this2.autoMove(e);
+	      });
 	    }
 	  }, {
 	    key: 'init',
@@ -36574,8 +36579,27 @@ webpackJsonp([0,1],[
 	        snakeArr: [{ row: 4, col: 4 }, { row: 4, col: 5 }, { row: 4, col: 6 }],
 	        attitude: 'left',
 	        bird: { row: 3, col: 3 },
-	        scale: 20
+	        scale: 20,
+	        difficulty: 1
 	      };
+	    }
+	  }, {
+	    key: 'kickOut',
+	    value: function kickOut() {
+	      var _this3 = this;
+	
+	      var KEY_MAP = {
+	        up: 38,
+	        right: 39,
+	        down: 40,
+	        left: 37
+	      };
+	      var keyCode = void 0;
+	      keyCode = KEY_MAP[this.state.attitude];
+	      var speed = 500 / this.state.difficulty;
+	      this.timer = setInterval(function () {
+	        _this3.doMove(keyCode);
+	      }, speed);
 	    }
 	  }, {
 	    key: 'newBird',
@@ -36610,81 +36634,167 @@ webpackJsonp([0,1],[
 	      var snakeArr = this.state.snakeArr;
 	      return snakeArr.some(function (ele) {
 	        return ele.row === firstEle.row && ele.col === firstEle.col;
-	      });
+	      }) || firstEle.row < 0 || firstEle.col > this.state.scale - 1 || firstEle.row > this.state.scale - 1 || firstEle.col < 0;
+	    }
+	  }, {
+	    key: 'doMove',
+	    value: function doMove(keyCode) {
+	      var attitude = void 0;
+	      var snakeArr = void 0;
+	      var firstEle = void 0;
+	      var bird = void 0;
+	      snakeArr = this.state.snakeArr;
+	      bird = this.state.bird;
+	      firstEle = {
+	        row: snakeArr[0].row,
+	        col: snakeArr[0].col
+	      };
+	      switch (keyCode) {
+	        case 38:
+	          attitude = 'up';
+	          if (this.state.attitude !== 'down') {
+	            firstEle.row = firstEle.row - 1;
+	          } else {
+	            return 0;
+	          }
+	          break;
+	        case 39:
+	          attitude = 'right';
+	          if (this.state.attitude !== 'left') {
+	            firstEle.col = firstEle.col + 1;
+	          } else {
+	            return 0;
+	          }
+	          break;
+	        case 40:
+	          attitude = 'down';
+	          if (this.state.attitude !== 'up') {
+	            firstEle.row = firstEle.row + 1;
+	          } else {
+	            return 0;
+	          }
+	          break;
+	        case 37:
+	          attitude = 'left';
+	          if (this.state.attitude !== 'right') {
+	            firstEle.col = firstEle.col - 1;
+	          } else {
+	            return 0;
+	          }
+	          break;
+	        default:
+	          attitude = 'left';
+	      }
+	      this.setState({ attitude: attitude });
+	
+	      if (!this.judgeDeath(firstEle)) {
+	        if (firstEle.row === bird.row && firstEle.col === bird.col) {
+	          this.newBird();
+	        } else {
+	          snakeArr.pop();
+	        }
+	        snakeArr.unshift(firstEle);
+	        this.setState({ snakeArr: snakeArr });
+	      } else {
+	        alert('you are dead');
+	        clearInterval(this.timer);
+	        this.setState(this.init());
+	      }
+	      return 1;
+	    }
+	  }, {
+	    key: 'autoMove',
+	    value: function autoMove(e) {
+	      e.preventDefault();
+	      this.kickOut();
 	    }
 	  }, {
 	    key: 'handleMove',
 	    value: function handleMove(e) {
 	      e.preventDefault();
-	      if (e.keyCode) {
-	        var attitude = void 0;
-	        var snakeArr = void 0;
-	        var firstEle = void 0;
-	        var bird = void 0;
-	        snakeArr = this.state.snakeArr;
-	        bird = this.state.bird;
-	        firstEle = {
-	          row: snakeArr[0].row,
-	          col: snakeArr[0].col
-	        };
-	        switch (e.keyCode) {
-	          case 38:
-	            attitude = 'up';
-	            if (this.state.attitude !== 'down' && firstEle.row > 0) {
-	              firstEle.row = firstEle.row - 1;
-	            } else {
-	              return 0;
-	            }
-	            break;
-	          case 39:
-	            attitude = 'right';
-	            if (this.state.attitude !== 'left' && firstEle.col < this.state.scale - 1) {
-	              console.log('yoo');
-	
-	              firstEle.col = firstEle.col + 1;
-	            } else {
-	              return 0;
-	            }
-	            break;
-	          case 40:
-	            attitude = 'down';
-	            if (this.state.attitude !== 'up' && firstEle.row < this.state.scale - 1) {
-	              firstEle.row = firstEle.row + 1;
-	            } else {
-	              return 0;
-	            }
-	            break;
-	          case 37:
-	            attitude = 'left';
-	            if (this.state.attitude !== 'right' && firstEle.col > 0) {
-	              firstEle.col = firstEle.col - 1;
-	            } else {
-	              return 0;
-	            }
-	            break;
-	          default:
-	            attitude = 'left';
-	        }
-	        this.setState({ attitude: attitude });
-	        if (!this.judgeDeath(firstEle)) {
-	          if (firstEle.row === bird.row && firstEle.col === bird.col) {
-	            this.newBird();
-	          } else {
-	            snakeArr.pop();
-	          }
-	          snakeArr.unshift(firstEle);
-	          this.setState({ snakeArr: snakeArr });
-	        } else {
-	          alert('you are dead');
-	          this.setState(this.init());
-	        }
+	      if (this.timer) {
+	        clearInterval(this.timer);
 	      }
-	      return 1;
+	      if (e.keyCode) {
+	        this.doMove(e.keyCode);
+	      }
+	    }
+	  }, {
+	    key: 'handleEasy',
+	    value: function handleEasy() {
+	      this.setState({
+	        difficulty: 1
+	      });
+	    }
+	  }, {
+	    key: 'handleMiddle',
+	    value: function handleMiddle() {
+	      this.setState({
+	        difficulty: 5
+	      });
+	    }
+	  }, {
+	    key: 'handleDifficulty',
+	    value: function handleDifficulty() {
+	      this.setState({
+	        difficulty: 10
+	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(_Layout2.default, { scale: this.state.scale, snake: this.state.snakeArr, bird: this.state.bird });
+	      var _this4 = this;
+	
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(_Layout2.default, {
+	          scale: this.state.scale,
+	          snake: this.state.snakeArr,
+	          bird: this.state.bird
+	        }),
+	        React.createElement(
+	          'ul',
+	          { className: 'difficulty' },
+	          React.createElement(
+	            'li',
+	            null,
+	            React.createElement(
+	              'button',
+	              {
+	                onClick: function onClick(e) {
+	                  return _this4.handleEasy(e);
+	                }
+	              },
+	              'Easy'
+	            )
+	          ),
+	          React.createElement(
+	            'li',
+	            { onClick: function onClick(e) {
+	                return _this4.handleMiddle(e);
+	              } },
+	            React.createElement(
+	              'button',
+	              null,
+	              'Middle'
+	            )
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            React.createElement(
+	              'button',
+	              {
+	                onClick: function onClick(e) {
+	                  return _this4.handleDifficulty(e);
+	                }
+	              },
+	              'Hard'
+	            )
+	          )
+	        )
+	      );
 	    }
 	  }]);
 	
@@ -36698,7 +36808,7 @@ webpackJsonp([0,1],[
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(React) {"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -36706,9 +36816,7 @@ webpackJsonp([0,1],[
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	__webpack_require__(254);
-	
-	var _Ele = __webpack_require__(255);
+	var _Ele = __webpack_require__(254);
 	
 	var _Ele2 = _interopRequireDefault(_Ele);
 	
@@ -36734,7 +36842,7 @@ webpackJsonp([0,1],[
 	  }
 	
 	  _createClass(SnakeLayout, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      var ROW = this.props.scale;
 	      var COL = this.props.scale;
@@ -36763,8 +36871,8 @@ webpackJsonp([0,1],[
 	        }
 	        rowID = kRow.toString();
 	        Layout.push(React.createElement(
-	          'div',
-	          { key: rowID, id: rowID, className: 'snake-row' },
+	          "div",
+	          { key: rowID, id: rowID, className: "snake-row" },
 	          RowEle
 	        ));
 	      };
@@ -36773,8 +36881,8 @@ webpackJsonp([0,1],[
 	        _loop(kRow);
 	      }
 	      return React.createElement(
-	        'div',
-	        { id: 'snake-layout', className: 'snake-layout' },
+	        "div",
+	        { id: "snake-layout", className: "snake-layout" },
 	        Layout
 	      );
 	    }
@@ -36788,12 +36896,6 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 254 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(React) {'use strict';
@@ -36851,6 +36953,12 @@ webpackJsonp([0,1],[
 	
 	exports.default = Ele;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ },
+/* 255 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ },
 /* 256 */

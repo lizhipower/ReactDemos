@@ -91,6 +91,15 @@ div.img-bot {
 .bird {
   background-color: red;
 }
+ul.difficulty {
+  overflow: auto;
+  zoom: 1;
+}
+ul.difficulty > li {
+  float: left;
+  list-style: none;
+  margin-right: 20px;
+}
 /*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -454,4 +463,4 @@ textarea {
   -webkit-appearance: none;
 }
 
-/*# sourceMappingURL=main.css.map?a2d6865884d8e0e58cbd-030c0fbeff233abd1280*/
+/*# sourceMappingURL=main.css.map?a9b518a75b8bbd485a47-994b8d36c9ba4930f183*/
