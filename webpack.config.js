@@ -6,7 +6,6 @@ var indexPath = path.resolve(__dirname, 'src/index.js');
 var outputPath = path.resolve(__dirname, 'public');
 module.exports = {
   entry: [
-    'webpack/hot/dev-server',
     indexPath
   ],
   output: {
@@ -20,7 +19,7 @@ module.exports = {
       {
         test: /\.js?$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015,presets[]=stage-0']
+        loaders: ['babel?presets[]=react,presets[]=es2015,presets[]=stage-0']
       },
       {
         test: /.less$/,
