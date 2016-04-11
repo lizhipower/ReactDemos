@@ -11,8 +11,12 @@ export default class SnakeDemo extends React.Component {
     this.state = this.init();
   }
   componentDidMount() {
-    $(document).keydown((e) => this.handleMove(e));
-    $(document).keyup((e) => this.autoMove(e));
+    $(document).on('keydown', (e) => this.handleMove(e));
+    $(document).on('keyup', (e) => this.autoMove(e));
+  }
+  componentWillUnmount() {
+    $(document).off('keydown', (e) => this.handleMove(e));
+    $(document).off('keyup', (e) => this.autoMove(e));
   }
   init() {
     return {

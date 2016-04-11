@@ -22,3 +22,5 @@ Demos:
 - accordion
 - layout
 - DOM event
+- snake
+- BOM
