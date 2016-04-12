@@ -8,7 +8,7 @@ import Photo from './pages/Photo';
 import Blog from './pages/Blog';
 import Profile from './pages/Profile';
 
-import Demos from './pages/Demos/Demos';
+import Demos from './pages/Demos/index';
 import Accordion from './components/Accordion';
 import StringDemos from './components/StringDemos';
 import LayoutDemos from './components/LayoutDemos';

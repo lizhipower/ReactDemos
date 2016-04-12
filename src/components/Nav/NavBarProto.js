@@ -5,16 +5,17 @@
 import { IndexLink, Link } from 'react-router';
 import classNames from 'classnames';
 export default class NavBarProto extends React.Component {
+
   render() {
-    let { to, content, isActive, isIndex } = this.props;
+    let { to, isIndex, active } = this.props;
     let classes = classNames({
-      active: isActive
+      active
     });
     let NavLink;
     if (isIndex) {
-      NavLink = <IndexLink to={ to } className={classes}>{ content }</IndexLink>;
+      NavLink = <IndexLink to={ to } className={classes}>{ this.props.children }</IndexLink>;
     } else {
-      NavLink = <Link to={ to } className={classes}>{ content }</Link>;
+      NavLink = <Link to={ to } className={classes}>{ this.props.children }</Link>;
     }
     return (
       <li>

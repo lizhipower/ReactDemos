@@ -3,28 +3,41 @@
  * Email: lizhipower@gmail.com
  */
 import NavBarProto from './NavBarProto';
-
+import './index.less';
 export class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.init();
   }
+  setActive(e) {
+    e.preventDefault();
+    let li = e.target.parentNode;
+    let ul = li.parentNode;
+    let liArr = ul.childNodes;
+    let index = [].indexOf.call(liArr, li);
+    let { activeStatus } = this.state;
+    activeStatus.fill(false);
+    activeStatus[index] = true;
+    this.setState({
+      activeStatus
+    });
+  }
   init() {
-    let activeStatus = [];
     let activeLength = this.props.children.length;
-    for (let i = 0; i < activeLength; i++) {
-      activeStatus[i] = !Boolean(i);
-    }
+    let activeStatus = new Array(activeLength);
     return { activeStatus };
   }
   render() {
     let children = React.Children.map(this.props.children, (c, index) =>
     React.cloneElement(c, {
-      isActive: this.state.activeStatus[index]
+      active: this.state.activeStatus[index]
     })
     );
     return (
-      <ul>
+      <ul
+        className="nav-wrap clearfix"
+        onClick={(e) => this.setActive(e)}
+      >
         { children }
       </ul>
     );
@@ -33,17 +46,21 @@ export class Nav extends React.Component {
 
 export class IndexNavBar extends NavBarProto {
   render() {
-    let { to, content, isActive } = this.props;
+    let { to, active } = this.props;
     return (
-      <NavBarProto isIndex to={ to } content={ content } isActive={ isActive } />
+      <NavBarProto isIndex to={ to } active={ active }>
+        { this.props.children }
+      </NavBarProto>
     );
   }
 }
 export class NavBar extends NavBarProto {
   render() {
-    let { to, content, isActive } = this.props;
+    let { to, active } = this.props;
     return (
-      <NavBarProto isIndex={ false } to={ to } content={ content } isActive={ isActive } />
+      <NavBarProto isIndex={ false } to={ to } active={ active }>
+        { this.props.children }
+      </NavBarProto>
     );
   }
 }

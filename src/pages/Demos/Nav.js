@@ -3,7 +3,6 @@
  * Email: lizhipower@gmail.com
  */
 import { Link } from 'react-router';
-import './index.less';
 export default class Nav extends React.Component {
   render() {
     return (
