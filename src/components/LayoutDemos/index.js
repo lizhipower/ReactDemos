@@ -4,7 +4,7 @@
  */
 import './LayouDemo.less';
 
-export default class LayoutDemo extends React.Component {
+export default class LayoutDemos extends React.Component {
   render() {
     return (
       <div id="container">

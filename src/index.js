@@ -2,17 +2,19 @@
  * Created by ZhiLI on 2016/3/21.
  * Email: lizhipower@gmail.com
  */
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
 import Layout from './pages/Layout';
 import Photo from './pages/Photo';
 import Blog from './pages/Blog';
 import Profile from './pages/Profile';
-import Accordion from './pages/Accordion';
-import StringDemo from './pages/StringDemo';
-import LayoutDemo from './pages/LayoutDemo';
-import DOMEventDemo from './pages/DOMEventDemo';
-import Snake from './pages/Snake';
-import BOM from './pages/BOM';
+
+import Demos from './pages/Demos/Demos';
+import Accordion from './components/Accordion';
+import StringDemos from './components/StringDemos';
+import LayoutDemos from './components/LayoutDemos';
+import DOMEvent from './components/DOMEvent';
+import Snake from './components/Snake';
+import BOM from './components/BOM';
 
 import '../node_modules/normalize.less';
 const app = document.getElementById('app');
@@ -20,15 +22,18 @@ const app = document.getElementById('app');
 const App = (
   <Router history={hashHistory}>
     <Route path="/" component={ Layout }>
-      <IndexRoute component={ Photo } />
-      <Route path="/blog" component={ Blog } />
-      <Route path="/profile" component={ Profile } />
-      <Route path="/accordion" component={ Accordion } />
-      <Route path="/string_demo" component={ StringDemo } />
-      <Route path="/layout_demo" component={ LayoutDemo } />
-      <Route path="/event_demo" component={ DOMEventDemo } />
-      <Route path="/snake" component={ Snake } />
-      <Route path="/bom" component={ BOM } />
+      <IndexRedirect to="demos" />
+      <Route path="demos" component={ Demos }>
+        <Route path="accordion" component={ Accordion } />
+        <Route path="string_demo" component={ StringDemos } />
+        <Route path="layout_demo" component={ LayoutDemos } />
+        <Route path="event_demo" component={ DOMEvent } />
+        <Route path="snake" component={ Snake } />
+        <Route path="bom" component={ BOM } />
+      </Route>
+      <Route path="photo" component={ Photo } />
+      <Route path="blog" component={ Blog } />
+      <Route path="profile" component={ Profile } />
     </Route>
   </Router>
 );

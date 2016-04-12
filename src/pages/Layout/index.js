@@ -2,8 +2,8 @@
  * Created by ZhiLI on 2016/3/21.
  * Email: lizhipower@gmail.com
  */
-import Nav from '../components/Layout/Nav';
-import Footer from '../components/Layout/Footer';
+import Nav from './Nav';
+import Footer from './Footer';
 
 export default class Layout extends React.Component {
   constructor() {

@@ -22,15 +22,18 @@ export default class Nav extends React.Component {
     return (
       <div>
         <ul onClick = { this.handleLinkClick.bind(this) }>
-          <li><IndexLink to="/" >Photo</IndexLink></li>
-          <li><Link to="/blog">Blog</Link></li>
-          <li><Link to="/profile">Profile</Link></li>
-          <li><Link to="/accordion">Accordion</Link></li>
-          <li><Link to="/string_demo">StringDemo</Link></li>
-          <li><Link to="/layout_demo">LayoutDemo</Link></li>
-          <li><Link to="/event_demo">DOMEventDemo</Link></li>
-          <li><Link to="/snake">Snake</Link></li>
-          <li><Link to="/bom">BOM</Link></li>
+          <li>
+            <IndexLink to="/photo" >Photo</IndexLink>
+          </li>
+          <li>
+            <Link to="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <Link to="/demos">Demos</Link>
+          </li>
         </ul>
       </div>
 

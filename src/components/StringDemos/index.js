@@ -2,7 +2,7 @@
  * Created by ZhiLI on 2016/3/27.
  * Email: lizhipower@gmail.com
  */
-export default class StringUnique extends React.Component {
+export default class StringDemos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

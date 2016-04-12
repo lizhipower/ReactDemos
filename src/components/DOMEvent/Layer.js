@@ -2,7 +2,7 @@
  * Created by ZhiLI on 2016/4/7.
  * Email: lizhipower@gmail.com
  */
-export default class DOMEventLayer extends React.Component {
+export default class Layer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

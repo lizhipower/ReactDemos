@@ -3,9 +3,6 @@
  * Email: lizhipower@gmail.com
  */
 import AccordionEle from './AccordionEle';
-import className from 'classnames';
-
-
 import './styles/accordin.less';
 import img1 from './imgs/1.jpg';
 import img2 from './imgs/2.jpg';
@@ -15,7 +12,7 @@ import img5 from './imgs/5.jpg';
 import img6 from './imgs/6.jpg';
 import img7 from './imgs/7.jpg';
 
-export default class AccordionLayout extends React.Component {
+export default class Accordion extends React.Component {
   handleEnter(e) {
     $(e.currentTarget).css('width', '318px');
   }

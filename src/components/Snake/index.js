@@ -5,7 +5,7 @@
 import SnakeLayout from './Layout';
 import './layout.less';
 
-export default class SnakeDemo extends React.Component {
+export default class Snake extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.init();

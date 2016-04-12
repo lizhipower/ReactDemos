@@ -4,7 +4,7 @@
  */
 import Table from './Table';
 
-export default class BOMDemo extends React.Component {
+export default class BOM extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

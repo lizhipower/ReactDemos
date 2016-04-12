@@ -3,7 +3,7 @@
  * Email: lizhipower@gmail.com
  */
 import './DOMEvent.less';
-import DOMEventLayer from './DOMEventLayer';
+import Layer from './Layer';
 
 export default class DOMEvent extends React.Component {
   handleClick(e) {
@@ -13,10 +13,10 @@ export default class DOMEvent extends React.Component {
   render() {
     return (
       <div>
-        <DOMEventLayer>
-          <DOMEventLayer>
-            <DOMEventLayer>
-              <DOMEventLayer>
+        <Layer>
+          <Layer>
+            <Layer>
+              <Layer>
                 <section id="DOM-target">
                   <h3>click and observe the procedure of DOM event:</h3>
                   <ul>
@@ -25,10 +25,10 @@ export default class DOMEvent extends React.Component {
                     <li>Bubbling</li>
                   </ul>
                 </section>
-              </DOMEventLayer>
-            </DOMEventLayer>
-          </DOMEventLayer>
-        </DOMEventLayer>
+              </Layer>
+            </Layer>
+          </Layer>
+        </Layer>
         <div id="expander"
           onClick={(e) => this.handleClick(e)}
         ></div>
