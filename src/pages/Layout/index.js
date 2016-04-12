@@ -4,6 +4,7 @@
  */
 import Nav from './Nav';
 import Footer from './Footer';
+import './index.less';
 
 export default class Layout extends React.Component {
   constructor() {
@@ -16,7 +17,7 @@ export default class Layout extends React.Component {
     const { location } = this.props;
     return (
       <div>
-        <h1>{location.pathname}</h1>
+        <h1 className="layout-title">We are now at {location.pathname}</h1>
         <Nav location={ location } />
         {this.props.children}
         <Footer />

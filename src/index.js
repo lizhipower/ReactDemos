@@ -15,6 +15,7 @@ import LayoutDemos from './components/LayoutDemos';
 import DOMEvent from './components/DOMEvent';
 import Snake from './components/Snake';
 import BOM from './components/BOM';
+import TestNav from './components/Nav/test';
 
 import '../node_modules/normalize.less';
 const app = document.getElementById('app');
@@ -30,6 +31,7 @@ const App = (
         <Route path="event_demo" component={ DOMEvent } />
         <Route path="snake" component={ Snake } />
         <Route path="bom" component={ BOM } />
+        <Route path="nav" component={ TestNav } />
       </Route>
       <Route path="photo" component={ Photo } />
       <Route path="blog" component={ Blog } />

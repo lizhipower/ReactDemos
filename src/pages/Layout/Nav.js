@@ -3,6 +3,7 @@
  * Email: lizhipower@gmail.com
  */
 import { IndexLink, Link } from 'react-router';
+import './index.less';
 export default class Nav extends React.Component {
 
 
@@ -20,23 +21,23 @@ export default class Nav extends React.Component {
   }
   render() {
     return (
-      <div>
-        <ul onClick = { this.handleLinkClick.bind(this) }>
-          <li>
-            <IndexLink to="/photo" >Photo</IndexLink>
-          </li>
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-          <li>
-            <Link to="/demos">Demos</Link>
-          </li>
-        </ul>
-      </div>
-
+      <ul
+        className="nav-wrap clearfix"
+        onClick = { (e) => this.handleLinkClick(e) }
+      >
+        <li>
+          <IndexLink to="/photo" >Photo</IndexLink>
+        </li>
+        <li>
+          <Link to="/blog">Blog</Link>
+        </li>
+        <li>
+          <Link to="/profile">Profile</Link>
+        </li>
+        <li>
+          <Link to="/demos">Demos</Link>
+        </li>
+      </ul>
     );
   }
 }

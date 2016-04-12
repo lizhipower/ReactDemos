@@ -2,11 +2,15 @@
  * Created by ZhiLI on 2016/4/12.
  * Email: lizhipower@gmail.com
  */
-import { IndexLink, Link } from 'react-router';
+import { Link } from 'react-router';
+import './index.less';
 export default class Nav extends React.Component {
   render() {
     return (
-      <ul>
+      <ul
+        id="demos-nav"
+        className="nav-wrap clearfix"
+      >
         <li>
           <Link to="/demos/accordion" >Accordion</Link>
         </li>
@@ -24,6 +28,9 @@ export default class Nav extends React.Component {
         </li>
         <li>
           <Link to="/demos/bom">BOM</Link>
+        </li>
+        <li>
+          <Link to="/demos/nav">Nav</Link>
         </li>
       </ul>
     );
