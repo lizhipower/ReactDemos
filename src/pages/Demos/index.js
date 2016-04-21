@@ -28,8 +28,11 @@ export default class Demos extends React.Component {
           <NavBar to="/demos/bom" isActive={ false }>
             BOM
           </NavBar>
-          <NavBar to="/demos/nav" isActive={ false }>
-            Nav
+          <NavBar to="/demos/auto_complete" isActive={ false }>
+            AutoComplete
+          </NavBar>
+          <NavBar to="/demos/dropdown" isActive={ false }>
+            Dropdown
           </NavBar>
         </Nav>
         {this.props.children}

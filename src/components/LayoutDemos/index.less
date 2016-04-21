@@ -1,0 +1,41 @@
+@import "~normalize.less";
+
+#left, #middle-wrap, #left {
+  float: left;
+  min-height: 130px;
+}
+#left {
+  margin-left: -100%;
+  width: 200px;
+}
+#middle-wrap {
+  width: 100%;
+}
+#middle {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+#right {
+  width: 200px;
+  float: left;
+  margin-left: -200px;
+}
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+.parent {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  background-color: blue;
+}
+.child {
+  position: absolute;
+  z-index: 1000;
+  bottom: 100%;
+  width: 200px;
+  height: 200px;
+  background-color: red;
+
+}
