@@ -7,37 +7,25 @@ import './index.less';
 export class Nav extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.init();
+    this.state = {
+      activeIndex: 0
+    };
   }
-  setActive(e) {
-    e.preventDefault();
-    let li = e.target.parentNode;
-    let ul = li.parentNode;
-    let liArr = ul.childNodes;
-    let index = [].indexOf.call(liArr, li);
-    let { activeStatus } = this.state;
-    activeStatus.fill(false);
-    activeStatus[index] = true;
+  getActiveIndex(activeIndex) {
     this.setState({
-      activeStatus
+      activeIndex
     });
-  }
-  init() {
-    let activeLength = this.props.children.length;
-    let activeStatus = new Array(activeLength);
-    return { activeStatus };
   }
   render() {
     let children = React.Children.map(this.props.children, (c, index) =>
     React.cloneElement(c, {
-      active: this.state.activeStatus[index]
+      active: this.state.activeIndex,
+      getActiveIndex: this.getActiveIndex.bind(this),
+      index
     })
     );
     return (
-      <ul
-        className="nav-wrap clearfix"
-        onClick={(e) => this.setActive(e)}
-      >
+      <ul className="nav-wrap clearfix">
         { children }
       </ul>
     );
@@ -46,9 +34,8 @@ export class Nav extends React.Component {
 
 export class IndexNavBar extends NavBarProto {
   render() {
-    let { to, active } = this.props;
     return (
-      <NavBarProto isIndex to={ to } active={ active }>
+      <NavBarProto isIndex { ...this.props }>
         { this.props.children }
       </NavBarProto>
     );
@@ -56,9 +43,8 @@ export class IndexNavBar extends NavBarProto {
 }
 export class NavBar extends NavBarProto {
   render() {
-    let { to, active } = this.props;
     return (
-      <NavBarProto isIndex={ false } to={ to } active={ active }>
+      <NavBarProto isIndex={ false } { ...this.props }>
         { this.props.children }
       </NavBarProto>
     );

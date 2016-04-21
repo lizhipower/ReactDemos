@@ -110,7 +110,9 @@ export default class StringDemos extends React.Component {
           '[object Function]': 0
         };
         for (let props in obj) {
-          this[props] = obj[props];
+          if (obj.hasOwnProperty(props)) {
+            this[props] = obj[props];
+          }
         }
       }
     }
