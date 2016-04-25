@@ -298,7 +298,7 @@ button,
 /**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
  *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS.
+ * 2. Correct the inability to style clickable type in iOS.
  */
 button,
 html [type="button"],
@@ -693,7 +693,7 @@ button,
 /**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
  *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS.
+ * 2. Correct the inability to style clickable type in iOS.
  */
 button,
 html [type="button"],
@@ -1113,7 +1113,7 @@ button,
 /**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
  *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS.
+ * 2. Correct the inability to style clickable type in iOS.
  */
 button,
 html [type="button"],
@@ -1595,7 +1595,7 @@ button,
 /**
  * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
  *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS.
+ * 2. Correct the inability to style clickable type in iOS.
  */
 button,
 html [type="button"],

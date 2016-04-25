@@ -503,7 +503,7 @@ webpackJsonp([0,1],[
 	      if (nextStringText !== this._stringText) {
 	        // TODO: Save this as pending props and use performUpdateIfNecessary
 	        // and/or updateComponent to do the actual update for consistency with
-	        // other component types?
+	        // other component type?
 	        this._stringText = nextStringText;
 	        var node = ReactMount.getNode(this._rootNodeID);
 	        DOMChildrenOperations.updateTextContent(node, nextStringText);
@@ -1313,7 +1313,7 @@ webpackJsonp([0,1],[
 	 * When a component's children are updated, a series of update configuration
 	 * objects are created in order to batch and serialize the required changes.
 	 *
-	 * Enumerates all the possible types of update configurations.
+	 * Enumerates all the possible type of update configurations.
 	 *
 	 * @internal
 	 */
@@ -2746,7 +2746,7 @@ webpackJsonp([0,1],[
 	
 	/**
 	 * Temporary (?) hack so that we can store all top-level pending updates on
-	 * composites instead of having to worry about different types of components
+	 * composites instead of having to worry about different type of components
 	 * here.
 	 */
 	var TopLevelWrapper = function () {};
@@ -3457,7 +3457,7 @@ webpackJsonp([0,1],[
 	   * register the `mousemove` on the document object, then it will of course
 	   * catch all `mousemove`s. This along with iOS quirks, justifies restricting
 	   * top-level listeners to the document object only, at least for these
-	   * movement types of events and possibly all events.
+	   * movement type of events and possibly all events.
 	   *
 	   * @see http://www.quirksmode.org/blog/archives/2010/09/click_event_del.html
 	   *
@@ -7480,7 +7480,7 @@ webpackJsonp([0,1],[
 	   * @private
 	   */
 	  _checkPropTypes: function (propTypes, props, location) {
-	    // TODO: Stop validating prop types here and only use the element
+	    // TODO: Stop validating prop type here and only use the element
 	    // validation.
 	    var componentName = this.getName();
 	    for (var propName in propTypes) {
@@ -7560,7 +7560,7 @@ webpackJsonp([0,1],[
 	
 	    // Distinguish between a props update versus a simple state update
 	    if (prevParentElement === nextParentElement) {
-	      // Skip checking prop types again -- we don't read inst.props to avoid
+	      // Skip checking prop type again -- we don't read inst.props to avoid
 	      // warning for DOM component props in this upgrade
 	      nextProps = nextParentElement.props;
 	    } else {
@@ -8707,7 +8707,7 @@ webpackJsonp([0,1],[
 	}
 	
 	/**
-	 * Translate native top level events into event types.
+	 * Translate native top level events into event type.
 	 *
 	 * @param {string} topLevelType
 	 * @return {object}
@@ -8881,7 +8881,7 @@ webpackJsonp([0,1],[
 	      return chars;
 	
 	    default:
-	      // For other native event types, do nothing.
+	      // For other native event type, do nothing.
 	      return null;
 	  }
 	}
@@ -8988,7 +8988,7 @@ webpackJsonp([0,1],[
 	 *
 	 * This plugin is also responsible for emitting `composition` events, thus
 	 * allowing us to share composition fallback code for both `beforeInput` and
-	 * `composition` event types.
+	 * `composition` event type.
 	 */
 	var BeforeInputEventPlugin = {
 	
@@ -9038,7 +9038,7 @@ webpackJsonp([0,1],[
 	var getListener = EventPluginHub.getListener;
 	
 	/**
-	 * Some event types have a notion of different registration names for different
+	 * Some event type have a notion of different registration names for different
 	 * "phases" of propagation. This finds listeners by a given phase.
 	 */
 	function listenerAtPhase(id, event, propagationPhase) {
@@ -12703,7 +12703,7 @@ webpackJsonp([0,1],[
 	}
 	
 	/**
-	 * Provide a linked `value` attribute for controlled forms. You should not use
+	 * Provide a linked `value` attribute for controlled FORMS. You should not use
 	 * this outside of the ReactDOM controlled form components.
 	 */
 	var LinkedValueUtils = {
@@ -13105,7 +13105,7 @@ webpackJsonp([0,1],[
 	  return propType;
 	}
 	
-	// This handles more types than `getPropType`. Only used for error messages.
+	// This handles more type than `getPropType`. Only used for error messages.
 	// See `createPrimitiveTypeChecker`.
 	function getPreciseType(propValue) {
 	  var propType = getPropType(propValue);
@@ -13245,7 +13245,7 @@ webpackJsonp([0,1],[
 	    var content = '';
 	
 	    // Flatten children and warn if they aren't strings or numbers;
-	    // invalid types are ignored.
+	    // invalid type are ignored.
 	    ReactChildren.forEach(props.children, function (child) {
 	      if (child == null) {
 	        return;
@@ -15204,7 +15204,7 @@ webpackJsonp([0,1],[
 	  statics: SpecPolicy.DEFINE_MANY,
 	
 	  /**
-	   * Definition of prop types for this component.
+	   * Definition of prop type for this component.
 	   *
 	   * @type {object}
 	   * @optional
@@ -15212,7 +15212,7 @@ webpackJsonp([0,1],[
 	  propTypes: SpecPolicy.DEFINE_MANY,
 	
 	  /**
-	   * Definition of context types for this component.
+	   * Definition of context type for this component.
 	   *
 	   * @type {object}
 	   * @optional
@@ -15220,7 +15220,7 @@ webpackJsonp([0,1],[
 	  contextTypes: SpecPolicy.DEFINE_MANY,
 	
 	  /**
-	   * Definition of context types this component sets for its children.
+	   * Definition of context type this component sets for its children.
 	   *
 	   * @type {object}
 	   * @optional
@@ -26357,7 +26357,7 @@ webpackJsonp([0,1],[
 	}
 	
 	/**
-	 * Returns a function to use in pseudos for input types
+	 * Returns a function to use in pseudos for input type
 	 * @param {String} type
 	 */
 	function createInputPseudo( type ) {
@@ -26988,7 +26988,7 @@ webpackJsonp([0,1],[
 					match[4] = +( match[4] ? match[5] + (match[6] || 1) : 2 * ( match[3] === "even" || match[3] === "odd" ) );
 					match[5] = +( ( match[7] + match[8] ) || match[3] === "odd" );
 	
-				// other types prohibit arguments
+				// other type prohibit arguments
 				} else if ( match[3] ) {
 					Sizzle.error( match[0] );
 				}
@@ -27368,7 +27368,7 @@ webpackJsonp([0,1],[
 				return !Expr.pseudos["empty"]( elem );
 			},
 	
-			// Element/input types
+			// Element/input type
 			"header": function( elem ) {
 				return rheader.test( elem.nodeName );
 			},
@@ -29840,13 +29840,13 @@ webpackJsonp([0,1],[
 	function on( elem, types, selector, data, fn, one ) {
 		var origFn, type;
 	
-		// Types can be a map of types/handlers
+		// Types can be a map of type/handlers
 		if ( typeof types === "object" ) {
 	
-			// ( types-Object, selector, data )
+			// ( type-Object, selector, data )
 			if ( typeof selector !== "string" ) {
 	
-				// ( types-Object, data )
+				// ( type-Object, data )
 				data = data || selector;
 				selector = undefined;
 			}
@@ -29858,18 +29858,18 @@ webpackJsonp([0,1],[
 	
 		if ( data == null && fn == null ) {
 	
-			// ( types, fn )
+			// ( type, fn )
 			fn = selector;
 			data = selector = undefined;
 		} else if ( fn == null ) {
 			if ( typeof selector === "string" ) {
 	
-				// ( types, selector, fn )
+				// ( type, selector, fn )
 				fn = data;
 				data = undefined;
 			} else {
 	
-				// ( types, data, fn )
+				// ( type, data, fn )
 				fn = data;
 				data = selector;
 				selector = undefined;
@@ -30026,7 +30026,7 @@ webpackJsonp([0,1],[
 				return;
 			}
 	
-			// Once for each type.namespace in types; type may be omitted
+			// Once for each type.namespace in type; type may be omitted
 			types = ( types || "" ).match( rnotwhite ) || [ "" ];
 			t = types.length;
 			while ( t-- ) {
@@ -30492,7 +30492,7 @@ webpackJsonp([0,1],[
 			}
 			if ( typeof types === "object" ) {
 	
-				// ( types-object [, selector] )
+				// ( type-object [, selector] )
 				for ( type in types ) {
 					this.off( type, selector, types[ type ] );
 				}
@@ -30500,7 +30500,7 @@ webpackJsonp([0,1],[
 			}
 			if ( selector === false || typeof selector === "function" ) {
 	
-				// ( types [, fn] )
+				// ( type [, fn] )
 				fn = selector;
 				selector = undefined;
 			}
@@ -33731,7 +33731,7 @@ webpackJsonp([0,1],[
 			},
 	
 			// Data converters
-			// Keys separate source (or catchall "*") and destination types with a single space
+			// Keys separate source (or catchall "*") and destination type with a single space
 			converters: {
 	
 				// Convert anything to text
@@ -35169,7 +35169,7 @@ webpackJsonp([0,1],[
 		},
 		undelegate: function( selector, types, fn ) {
 	
-			// ( namespace ) or ( selector, types [, fn] )
+			// ( namespace ) or ( selector, type [, fn] )
 			return arguments.length === 1 ?
 				this.off( selector, "**" ) :
 				this.off( types, selector || "**", fn );
