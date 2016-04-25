@@ -2,6 +2,9 @@
   "name": "Blog",
   "version": "1.0.0",
   "description": "",
+  "repository": {
+    "main": "https://github.com/lizhipower/ReactDemos.git"
+  },
   "main": "webpack.config.js",
   "scripts": {
     "build": "webpack --progress --colors",
@@ -14,12 +17,14 @@
     "date-and-time": "^0.3.0",
     "es6-promise": "^3.1.2",
     "flux": "^2.1.1",
-    "jquery": "^2.2.2",
+    "jquery": "^2.2.3",
     "normalize.css": "^4.0.0",
     "normalize.less": "^1.0.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-router": "^2.0.1"
+    "react-redux": "^4.4.5",
+    "react-router": "^2.0.1",
+    "redux": "^3.5.1"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",

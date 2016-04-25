@@ -34,6 +34,12 @@ export default class Demos extends React.Component {
           <NavBar to="/demos/dropdown" isActive={ false }>
             Dropdown
           </NavBar>
+          <NavBar to="/demos/todo_redux" isActive={ false }>
+            TodoRedux
+          </NavBar>
+          <NavBar to="/demos/form_redux" isActive={ false }>
+            FormRedux
+          </NavBar>
         </Nav>
         {this.props.children}
       </div>

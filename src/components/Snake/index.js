@@ -15,6 +15,9 @@ export default class Snake extends React.Component {
     $(document).on('keyup', (e) => this.autoMove(e));
   }
   componentWillUnmount() {
+    if (this.timer != null) {
+      clearInterval(this.timer);
+    }
     $(document).off('keydown', (e) => this.handleMove(e));
     $(document).off('keyup', (e) => this.autoMove(e));
   }

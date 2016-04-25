@@ -17,6 +17,8 @@ import Snake from './components/Snake';
 import BOM from './components/BOM';
 import AutoComplete from './components/AutoComplete';
 import Dropdown from './components/Dropdown/demo';
+import TodoRedux from './components/TodoRedux';
+import FormRedux from './components/FormRedux';
 
 import '../node_modules/normalize.less';
 const app = document.getElementById('app');
@@ -34,6 +36,8 @@ const App = (
         <Route path="bom" component={ BOM } />
         <Route path="auto_complete" component={ AutoComplete } />
         <Route path="dropdown" component={ Dropdown } />
+        <Route path="todo_redux" component={ TodoRedux } />
+        <Route path="form_redux" component={ FormRedux } />
       </Route>
       <Route path="photo" component={ Photo } />
       <Route path="blog" component={ Blog } />
